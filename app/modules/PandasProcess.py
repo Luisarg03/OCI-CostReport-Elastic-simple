@@ -5,6 +5,7 @@ import re
 import os
 import glob
 import json
+import shutil
 
 
 def PreProcess(path, filename):
@@ -26,7 +27,6 @@ def PreProcess(path, filename):
     for file in paths:
         print('conviertiendo: ', file)
         matching = [s for s in filename if file[18:-6] in s]
-        # print(path, matching[0])
             
         df = pd.read_csv(file, low_memory=False)
         df = df.fillna('null')
@@ -42,9 +42,12 @@ def PreProcess(path, filename):
         for row in dic:
             json.dump(row, jsonfile)
             jsonfile.write('\n')
-    
+
         del df
         del dic
         os.remove(file)
+
+        folder = '../report/'
+        shutil.move(path+id+'.json', folder)
 
     return True

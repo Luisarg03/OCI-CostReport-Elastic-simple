@@ -48,6 +48,14 @@ def create_paths():
     ---------
     str
     '''
+    folder = '../report/'
+    try:
+        shutil.rmtree(folder)
+    except:
+        pass
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+
     folder = '../jsonReport/'
     try:
         shutil.rmtree(folder)

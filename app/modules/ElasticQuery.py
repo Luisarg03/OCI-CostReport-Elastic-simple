@@ -117,6 +117,9 @@ def esdelete(client, index, filename):
         s = Search(using=client, index=index) \
             .query('regexp', filename=".*{}.*".format(filename))
         response = s.delete()
+        time.sleep(10)
+        
+        rows = s.count()
         return True
     except:
         return False
@@ -134,6 +137,6 @@ def count_rows_oci(client ,index, filename):
         if rows == 0:
             break
         else:
-            time.sleep(5)
+            time.sleep(15)
 
     return rows

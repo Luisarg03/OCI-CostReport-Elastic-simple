@@ -34,7 +34,7 @@ esclient = esclient['pro']
 
 if __name__ == '__main__':
 
-    # path = create_paths()
+    path = create_paths()
 
     _dir = '/home/luis/desarrollo/tsoft/metadata/Metadata/reproceso.csv'
     df = pd.read_csv(_dir, dtype={'filename': np.str_})
@@ -48,15 +48,15 @@ if __name__ == '__main__':
         count_rows_oci(esclient, index, file)
 
         ## Descarga de los nuevos files
-    #     list_files = RequestDownload(
-    #         ociclient['client'],
-    #         ociclient['bucket'],
-    #         prefix,
-    #         path
-    #         )
+        list_files = RequestDownload(
+            ociclient['client'],
+            ociclient['bucket'],
+            prefix,
+            path
+            )
 
-    #     unzip_list(path, list_files)
-    #     PreProcess(path, list_files)
+        unzip_list(path, list_files)
+        PreProcess(path, list_files)
 
 
     # # ## Desa funcion
